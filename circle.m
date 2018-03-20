@@ -1,12 +1,15 @@
 function U =  circle(fval,M,N)
-%fval: MxN x1 vector with rhs-value in grid points
-%M: number of interior points in x-direction
-%N: number of interior points in y-direction
+%fval: (MxN) x1 vector with rhs-value in grid points
+%Direction of iteration: First r (from 0 to 1) and then theta (from 0 to
+%2pi)
+%M: number of interior points in r-direction
+%N: number of interior points in theta-direction
 %returns value U MxN X 1 in the grid points
 
 h = 1/(M+1); %distance between nodes in x-dir
 k = 1/(N+1); %distance between nodes in y-dir
 %Construct A, the sparse diagonal block matrix diag(I,T,I)
+r=h:h:1; 
 e = ones(M*N,1);
 f = ones(M*N,1);
 f(M:M:N*M) = 0;
