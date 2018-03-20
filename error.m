@@ -1,4 +1,4 @@
-function [err_x, err_y] = error(f,solver,analytic)
+function [err_x, err_y] = error(f,analytic)
     n = 120;
     err_x = zeros(2,8);
     err_y = zeros(2,8);
@@ -8,10 +8,16 @@ function [err_x, err_y] = error(f,solver,analytic)
         m= 2^p;
         h = 1/(m+1);
         k = 1/(n+1);
-        U = solver(f,m,n);
-        u = analytic(m,n);
-        err_x(1,p-1) = norm(u-U,2)*np.sqrt(h*k);
-        err_x(0,p-1) = h;
+        
+        x = linspace(h,1-h,m);
+        y = linspace(k,1-k,n);
+        [X,Y] = meshgrid(x,y);
+        
+        fval = reshape(f(X,Y),m*n,1);
+        u = reshape(analytic(X,Y),m*n,1);
+        U = fivepoint(fval,m,n);
+        err_x(2,p) = norm(u-U,2)*sqrt(h*k);
+        err_x(1,p) = h;
     end
     
    % Check error/corvergance rate in m-direction
@@ -21,9 +27,15 @@ function [err_x, err_y] = error(f,solver,analytic)
         n= 2^p;
         h = 1/(m+1);
         k = 1/(n+1);
-        U = solver(f,m,n);
-        u = analytic(m,n);
-        err_y(1,p-1) = norm(u-U,2)*np.sqrt(h*k);
-        err_y(0,p-1) = k;
+        
+        x = linspace(h,1-h,m);
+        y = linspace(k,1-k,n);
+        [X,Y] = meshgrid(x,y);
+        
+        fval = reshape(f(X,Y),m*n,1);
+        u = reshape(analytic(X,Y),m*n,1);
+        U = fivepoint(fval,m,n);
+        err_y(2,p) = norm(u-U,2)*sqrt(h*k);
+        err_y(1,p) = k;
     end
 end

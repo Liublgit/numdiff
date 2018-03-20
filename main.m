@@ -20,7 +20,7 @@ V =  fivepoint(fval,M,N);
 U = fivepoint(V,M,N);
 
 %% Compute error %%
-
+[err_x, err_y] = error(f,u_exact);
 
 
 U_matrix = reshape(U,M,N)';
