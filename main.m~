@@ -26,30 +26,10 @@ V =  fivepoint(fval,M,N);
 U = fivepoint(V,M,N);
 
 %% Compute solution error in 2-norm, a.f.o. steplength %%
-[errorx, errory] = error(f,u_exact);
+[err_x, err_y] = error(f,u_exact);
 
-errorx
-errory
+
 %% Plot & Business %%
-figure(4)
-loglog(errorx(1,:), errorx(2,:))
-loglog(errory(1,:), errory(2,:))
-
-grid on
-xlabel('h/k')
-ylabel('2-norm error x-direction')
-title('loglog base 10 on x')
-
-% 
-% plt.loglog(errory[0], errory[1],basex=10)
-% plt.grid(True)
-% plt.xlabel('k')
-% plt.ylabel('2-norm error y-direction')
-% plt.title('loglog base 10 on x')
-% 
-% fig.savefig('solution.pdf')
-% plt.savefig('convergence.pdf')
-
 
 U_matrix = reshape(U,M,N)';
 u_exact_matrix = u_exact(X,Y);
