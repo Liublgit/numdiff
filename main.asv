@@ -28,11 +28,16 @@ V =  fivepoint(fval,M,N);
 U = fivepoint(V,M,N);
 
 %% Compute solution error in 2-norm, a.f.o. steplength %%
-[errorx, errory] = error(f,u_exact);
+%[errorx, errory] = error(f,u_exact);
+f_2 = @(x,y) -sin(2*pi*x).*sin(2*pi*y)*(8*pi^2);
+[errorx2, errory2] = error(f_2,u_exact);
 
-
-errorx
-errory
+errorx2
+errory2
+figure(4)
+loglog(errorx(1,:), errorx(2,:))
+hold on
+loglog(errory(1,:), errory(2,:))
 
 %% Plot & Business %%
 figure(4)
@@ -40,10 +45,10 @@ loglog(errorx(1,:), errorx(2,:))
 hold on
 loglog(errory(1,:), errory(2,:))
 
-grid on
-xlabel('h/k')
-ylabel('2-norm error x-direction')
-title('loglog base 10 on x')
+% grid on
+% xlabel('h/k')
+% ylabel('2-norm error x-direction')
+% title('loglog base 10 on x')
 
 % 
 % plt.loglog(errory[0], errory[1],basex=10)
