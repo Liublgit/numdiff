@@ -19,6 +19,10 @@ V =  fivepoint(fval,M,N);
 %eq 2: solve grad^2 u = v
 U = fivepoint(V,M,N);
 
+%% Compute error %%
+
+
+
 U_matrix = reshape(U,M,N)';
 u_exact_matrix = u_exact(X,Y);
 figure(1)
