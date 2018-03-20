@@ -16,4 +16,5 @@ F(M*(N-1)+1:end)=-gx1/k^2; %hvorfor minus? jo, fordi det er flyttet over fra and
 
 Uvec = A\F;
 U = reshape(Uvec,M,N)';
+
 end

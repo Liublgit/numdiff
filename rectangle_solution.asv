@@ -1,0 +1,15 @@
+%% solving the biharmonic eqution by solving the system of two poisson equations
+f =@(x,y) sin(2*pi*x)*cos(2*pi*x);
+M = 10;
+N = 10;
+%eq 1: solve grad^2 v = f
+
+
+%construct the matrix fval with f(x,y) in all gridpoints
+
+
+
+
+
+
+
