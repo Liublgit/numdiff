@@ -1,50 +1,28 @@
-function [err_x, err_y] = error(f,analytic)
+function [err_five, err_nine] = error(f,analytic)
     
-    n_points = 8;
-    err_x = zeros(2,n_points);
-    err_y = zeros(2,n_points);
+    M = 8;
+    err_five = zeros(2,M);
+    err_nine = zeros(2,M);
    
     % Check error/corvergance rate in m-direction
-    for p =1:n_points    
+    for p =1:M    
         m= 2^p;
+        n = m; % shrink steplength x/y simultanously
         h = 1/(m+1);
-        k = 1/(n+1);
-        
         x = linspace(h,1-h,m);
-        y = linspace(k,1-k,n);
-        [X,Y] = meshgrid(x,y);
+        
+        [X,Y] = meshgrid(x,x); 
         
         fval = reshape(f(X,Y)',m*n,1);
         u = reshape(analytic(X,Y)',m*n,1);
         V = fivepoint(fval,m,n);
         U = fivepoint(V,m,n);
-        err_x(2,p) = norm(U-u,2)*sqrt(h*k);
-        err_x(1,p) = h;
+        err_five(2,p) = norm(U-u,2)*sqrt(h^2);
+        err_five(1,p) = h;
         
-%         U_matrix = reshape(U,m,n)';
-%         u_exact_matrix = analytic(X,Y);
-%         figure(1)
-%         plot3(X,Y,U_matrix,'b*',X,Y,u_exact_matrix,'ro')
-    end
-    
-   % Check error/corvergance rate in n-direction
-
-    m = 100;
-    for p = 1:n_points
-        n= 2^p;
-        h = 1/(m+1);
-        k = 1/(n+1);
-        
-        x = linspace(h,1-h,m);
-        y = linspace(k,1-k,n);
-        [X,Y] = meshgrid(x,y);
-        
-        fval = reshape(f(X,Y)',m*n,1);
-        u = reshape(analytic(X,Y)',m*n,1);
-        V = fivepoint(fval,m,n);
-        U = fivepoint(V,m,n);
-        
-        err_y(2,p) = norm(U-u,2)*sqrt(h*k);
-        err_y(1,p) = k;
+        V = ninepoint(fval,m,n);
+        U = ninepoint(V,m,n);
+        err_nine(2,p) = norm(U-u,2)*sqrt(h^2);
+        err_nine(1,p) = h;
     end
 end
