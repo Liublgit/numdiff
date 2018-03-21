@@ -12,10 +12,9 @@ e = ones(M*N,1);
 f = ones(M*N,1);
 f(M:M:N*M) = 0;
 g = [1;f(1:end-1)];
-B = spdiags([1/k^2*e, 1/h^2*f, -2*(1/h^2+1/k^2)*e, 1/h^2*g, 1/k^2*e],[-M,-1,0,1,M],M*N,M*N);
-A = spdiags([e,4*e,e,4*e, -20*e, 4*e, e ,4*e,e],[-M-3,-M-2,-M-1,-1,0,1,M+1,M+2,M+3],M*N,M*N);
-full(B)
-full(A)
+t = [0;g(2:end)];
+A = spdiags([f,4*e,t,4*f, -20*e, 4*g, f ,4*e,g],[-M-1,-M,-M+1,-1,0,1,M-1,M,M+1],M*N,M*N);
+
 %solve the linear system to find U
-%U = A\fval;
+U = A\fval;
 end
