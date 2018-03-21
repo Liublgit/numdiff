@@ -1,4 +1,4 @@
-%% solving the biharmonic eqution by solving the system of two poisson equations
+% solving the biharmonic eqution by solving the system of two poisson equations
 
 
 %% Define function f and corresponding analytic solution
