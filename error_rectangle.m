@@ -1,4 +1,4 @@
-function [err_five, err_nine] = error(f,analytic)
+function [err_five, err_nine] = error_rectangle(f,analytic)
     
     M = 8;
     err_five = zeros(2,M);
