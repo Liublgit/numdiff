@@ -13,7 +13,9 @@ f = ones(M*N,1);
 f(M:M:N*M) = 0;
 g = [1;f(1:end-1)];
 t = [0;g(2:end)];
-A = spdiags([f,4*e,t,4*f, -20*e, 4*g, f ,4*e,g],[-M-1,-M,-M+1,-1,0,1,M-1,M,M+1],M*N,M*N);
+A = spdiags([f,4*e,t,4*f, -20*e, 4*g, f ,4*e,g],[-M-1,-M,-M+1,-1,0,1,M-1,M,M+1],M*N,M*N)/6;
+F = spdiags([e,f,8*e,g,e],[-M,-1,0,1,M],M*N,M*N)*(h^2)/12;
+fval = F*fval;
 
 %solve the linear system to find U
 U = A\fval;
