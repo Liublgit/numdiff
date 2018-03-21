@@ -1,5 +1,5 @@
 function [err_x, err_y] = error(f,analytic)
-    n = 100;
+    
     n_points = 8;
     err_x = zeros(2,n_points);
     err_y = zeros(2,n_points);
