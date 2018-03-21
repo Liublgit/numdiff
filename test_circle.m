@@ -1,6 +1,9 @@
 f =@(r,theta) 15*(1-r).*(r.*(1-r).^4 - 49*r.*(1-r).^3 + 124.*r.^2.*(1-r).^2 - 72*r.^3.*(1-r) + 8*r.^4).*cos(theta);
 u = @(r,theta) r.^4.*(1-r).*sin(3*theta).*cos(pi*r/2).*sin(pi*r);
 
+
+
+
 %test plotting
 % M = 4;
 % N = 2;
@@ -34,8 +37,8 @@ X =R.*cos(THETA);
 Y = R.*sin(THETA);
 
 %u_exact_matrix = u_exact(X,Y);
-figure(1)    
-plot3(X,Y,u(R,THETA))%,X,Y,u_exact_matrix,'ro')
+% figure(1)    
+% plot3(X,Y,u(R,THETA))%,X,Y,u_exact_matrix,'ro')
 
 figure(2)
-plot3(X,Y,U_matrix)
+plot3(X,Y,U_matrix,'*')

@@ -12,7 +12,7 @@ A = spdiags([1/k^2*e,1/h^2*f,-2*(1/h^2 + 1/k^2)*e, 1/h^2*g, 1/k^2*e],[-M,-1,0,1,
 x = 0:h:1;
 gx1 = sin(pi*x(2:end-1))'; %g(x,1)
 F = zeros(M*N,1);
-F(M*(N-1)+1:end)=-gx1/k^2; %hvorfor minus? jo, fordi det er flyttet over fra andre siden. husk å dele på k^2 også!!
+F(M*(N-1)+1:end)=-gx1/k^2; %hvorfor minus? jo, fordi det er flyttet over fra andre siden. husk ï¿½ dele pï¿½ k^2 ogsï¿½!!
 
 Uvec = A\F;
 U = reshape(Uvec,M,N)';
