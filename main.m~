@@ -23,9 +23,8 @@ F = f(X,Y)';%need to take the transpose in order to get it row-wise, since defau
 %reshape to vector-form, [f(row_1),f(row_2,...,f(row_M)]
 fval = reshape(F,M*N,1);
 
-%% Solve with five-point / nine-point stencil %%
+%% Solve %%
 
-% Five point
 V =  fivepoint(fval,M,N); 
 U = fivepoint(V,M,N);
 U_matrix = reshape(U,M,N)';
@@ -37,13 +36,16 @@ plot3(X,Y,U_matrix,'b*',X,Y,u_exact_matrix,'ro')
 figure(2)
 plot3(X,Y,U_matrix-u_exact_matrix)
 
-% Nine point 
+
+% 
 V = ninepoint(fval,M,N);
 U = ninepoint(V,M,N);
+
+figure(3)
 U_matrix = reshape(U,M,N)';
 u_exact_matrix = u_exact(X,Y);
 
-figure(3)
+figure(4)
 plot3(X,Y,U_matrix,'b*',X,Y,u_exact_matrix,'ro')
 
 
