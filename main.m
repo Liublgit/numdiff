@@ -48,18 +48,22 @@ plot3(X,Y,U_matrix,'b*',X,Y,u_exact_matrix,'ro')
 
 
 %% Compute solution error in 2-norm, a.f.o. steplength %%
-[errorx, errory] = error(f,u_exact);
+[five, nine] = error(f,u_exact);
 
 %% Plot & Business %%
 figure(5)
-loglog(errorx(1,:), errorx(2,:))
-figure(6)
-loglog(errory(1,:), errory(2,:))
-
+loglog(five(1,:), five(2,:))
 grid on
 xlabel('h/k')
 ylabel('2-norm error x-direction')
-title('loglog base 10 on x')
+title('loglog')
+
+figure(6)
+loglog(nine(1,:), nine(2,:))
+grid on
+xlabel('h/k')
+ylabel('2-norm error x-direction')
+title('loglog')
 
 
 
