@@ -1,3 +1,7 @@
+### Remaining tasks
+* Prove convergence for five/nine point scheme and find expected convergence rate
+* Understand applications/physical interp/boundary conditions
+
 ### Applications (relevant reading before reporting in latex)
 * https://en.wikipedia.org/wiki/Plate_theory 
 * https://en.wikipedia.org/wiki/Stokes_flow
