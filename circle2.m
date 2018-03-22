@@ -1,5 +1,5 @@
 function U =  circle2(fval,M,N)
-%TEST
+%DENNE FUNKER N�
 %fval: (MxN) x1 vector with rhs-value in grid points
 %Direction of iteration: First r (from 0 to 1) and then theta (from 0 to
 %2pi)
@@ -11,14 +11,12 @@ h = 1/(M+1); %distance between nodes in r-dir
 r=linspace(h,1-h,M); 
 k =2*pi/N; % vektor med k-verdier,
 r_values = repmat(r,N,1)';
-%k_values = repmat(k,N,1)'; % stabler N vektorer som med r-verdiene
 r_val = reshape(r_values,M*N,1);
-%k = reshape(k_values,M*N,1); % lagrer stabelen i opprinnelig navn k så vi slipper å endre "A"
 e = ones(M*N,1);
 f = ones(M*N,1);
 f(M:M:N*M) = 0;
 g = [1;f(1:end-1)];
-A = spdiags([1./(r_val.*k).^2.*e,(1 - 1./r_val)./h^2.*f,-2*(1/h^2 + 1./(r_val.*k).^2).*e, (1 + 1./r_val)./h^2.*g, 1./(r_val.*k).^2.*e],[-M,-1,0,1,M],M*N,M*N);
+A = spdiags([1./(r_val.*k).^2.*e,(1/h^2 - 1./(2*h*r_val)).*f,-2*(1/h^2 + 1./(r_val.*k).^2).*e, (1/h^2 + 1./(2*h*r_val)).*g, 1./(r_val.*k).^2.*e],[-M,-1,0,1,M],M*N,M*N);
 
 %dette er en midlertidig og treig m�te � gj�re det p�
 for ind = 1:M
