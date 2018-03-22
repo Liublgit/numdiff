@@ -1,12 +1,12 @@
 # Project outline
 
-## Applications (relevant reading before reporting in latex)
+### Applications (relevant reading before reporting in latex)
 * https://en.wikipedia.org/wiki/Plate_theory 
 * https://en.wikipedia.org/wiki/Stokes_flow
 * https://en.wikiversity.org/wiki/Airy_stress_function
 
 
-
+### Pep-talk from Charles
 Charles gikk raskt gjennom noen punkter som kan være greie å ha som utgangspunkt.
 1. What am I solving?
     * i.e. find appropriate boundary conditions
