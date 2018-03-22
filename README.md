@@ -5,6 +5,9 @@
 * https://en.wikipedia.org/wiki/Stokes_flow
 * https://en.wikiversity.org/wiki/Airy_stress_function
 
+### Helpful articles
+* http://www.maths.dundee.ac.uk/plin/ChenLiLin.pdf (similar problem and approach)
+
 
 ### Pep-talk from Charles
 Charles gikk raskt gjennom noen punkter som kan være greie å ha som utgangspunkt.
