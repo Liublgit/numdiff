@@ -20,8 +20,7 @@ A = spdiags([1./(r_val.*k).^2.*e,(1/h^2 - 1./(2*h*r_val)).*f,-2*(1/h^2 + 1./(r_v
 
 %dette er en midlertidig og treig mï¿½te ï¿½ gjï¿½re det pï¿½
 %her tar vi hensyn til at vi har et sirkulært domene, og at for punkter ved
-%theta = 0, j=1 og j = N må vi bruke informasjon fra motsatt side av 0: 
-%for j=1 er j-1 = N, og for j = N er j+1 = 1.
+%j=1 
 for ind = 1:M
     %block corresponding to row j = 1
     A(ind,(N-1)*M+ind) = 1/(k*r(ind))^2;

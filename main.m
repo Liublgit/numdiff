@@ -68,7 +68,10 @@ title('loglog')
 
 
 %% Define function f and corresponding analytic solution for disk centered in (0,0) with radius 1
-f =@(r,theta) (9/2)*sin(3*theta).*r.^2.*(-(22/3*(r-9/11)).*r*pi*cos((1/2)*pi.*r).^3+sin((1/2)*pi.*r).*(pi^2.*r.^3-pi^2.*r.^2-(64/9).*r+28/9).*cos((1/2)*pi.*r)^2+(44/9.*(r-9/11)).*r*pi.*cos((1/2)*pi.*r)-(2/9).*r.^2*pi^2.*sin((1/2)*pi.*r).*(r-1))
 u = @(r,theta) r.^4.*(1-r).*sin(3*theta).*cos(pi*r/2).*sin(pi*r);
+%for now, we are solving the problem laplacian(u) = f, in order to test the
+%circle-fivepoint function
+f =@(r,theta) (9/2).*sin(3.*theta).*r.^2.*(-(22/3.*(r-9/11)).*r.*pi.*cos((1/2)*pi.*r).^3+sin((1/2)*pi.*r).*(pi^2.*r.^3-pi^2.*r.^2-(64/9).*r+28/9).*cos((1/2).*pi.*r).^2+ (44/9.*(r-9/11)).*r*pi.*cos((1/2)*pi.*r)-(2/9).*r.^2*pi^2.*sin((1/2)*pi.*r).*(r-1));
+
 
 

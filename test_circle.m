@@ -1,7 +1,8 @@
 clear 
 clc
 close
-
+%DETTE ER KUN ET TESTE SKRIPT: TING SKAL ETTER HVERT FLYTTES HERFRA TIL
+%MAIN
 %f =@(r,theta) 15*(1-r).*(3*(1-r).^4 - 49*r.*(1-r).^3 + 124.*r.^2.*(1-r).^2 - 72*r.^3.*(1-r) + 8*r.^4).*cos(theta);
 
 u = @(r,theta) r.^4.*(1-r).*sin(3*theta).*cos(pi*r/2).*sin(pi*r);
