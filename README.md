@@ -9,6 +9,7 @@
 
 ### Helpful articles
 * http://www.maths.dundee.ac.uk/plin/ChenLiLin.pdf (similar problem and approach)
+* https://ocw.mit.edu/courses/aeronautics-and-astronautics/16-920j-numerical-methods-for-partial-differential-equations-sma-5212-spring-2003/lecture-notes/lec4.pdf (discretization of elliptic eq./Poisson, slides from MIT)
 
 
 ### Pep-talk from Charles
