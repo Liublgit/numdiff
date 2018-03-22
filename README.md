@@ -1,6 +1,7 @@
 ### Remaining tasks
 * Prove convergence for five/nine point scheme and find expected convergence rate
 * Understand applications/physical interp/boundary conditions
+* Generally "fill" the latex document, add plots, use smooth english.
 
 ### Applications (relevant reading before reporting in latex)
 * https://en.wikipedia.org/wiki/Plate_theory 
