@@ -1,5 +1,3 @@
-# Project outline
-
 ### Applications (relevant reading before reporting in latex)
 * https://en.wikipedia.org/wiki/Plate_theory 
 * https://en.wikipedia.org/wiki/Stokes_flow
