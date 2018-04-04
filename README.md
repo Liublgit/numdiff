@@ -3,12 +3,11 @@
 * Understand applications/physical interp/boundary conditions
 * Generally "fill in" the latex document, add plots, use smooth english.
 
-### Analysis
+### Analysis (10 p.)
 * Motivate your choice of method
 * Provide an analysis of the problem justifying the choice of the discretization
 * Prove the convergence of the numerical scheme (at least for a simplified, but relevant test problem)
- Max score for this part is 10 points.
-
+ 
 ### Applications (relevant reading before reporting in latex)
 * https://en.wikipedia.org/wiki/Plate_theory 
 * https://en.wikipedia.org/wiki/Stokes_flow
