@@ -2,6 +2,7 @@
 * Prove convergence for five/nine point scheme and find expected convergence rate
 * Understand applications/physical interp/boundary conditions
 * Generally "fill in" the latex document, add plots, use smooth english.
+* Choose our example problem, on which we will look at convergence rate and compare the numerical solution with the analytical solution
 
 ### Analysis (10 p.)
 * Motivate your choice of method
