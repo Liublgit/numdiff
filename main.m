@@ -2,8 +2,8 @@
 close all
 clear 
 
-circle = 1;
-if ~circle
+circle_choice = 1;
+if ~circle_choice
 
 
 %% Define function f and corresponding analytic solution for omega = [0,1]x[0,1]
@@ -80,12 +80,12 @@ f =@(r,theta) -(81/8).*sin(3*theta).*(-(44/3).*r.*pi.*(r.^2.*(r-9/11).*pi^2-(42/
 
 %% Solve using a circular grid
 
-M = 50; %number of internal nodes in r-dir
-N = 100; %number of internal nodes in theta-dir
-h = 1/(M+1);
+M = 100; %number of internal nodes in r-dir
+N = 40; %number of internal nodes in theta-dir
+h = 2/(2*M+1);
 k = 2*pi/N;
 %construct the matrix fval with f(r,theta) in all gridpoints
-r = linspace(h,1-h,M);
+r = ((1:M) - 1/2)*h;
 theta = k*(0:(N-1));
 
 [R,THETA] = meshgrid(r,theta);
@@ -94,10 +94,9 @@ F = f(R,THETA)';%need to take the transpose in order to get it row-wise, since d
 fval = reshape(F,M*N,1);
 
 %eq 1: solve grad^2 v = f
-V =  circle2(fval,M,N);
-%U = V;
+V =  circle(fval,M,N);
 %eq 2: solve grad^2 u = v
-U = circle2(V,M,N);
+U = circle(V,M,N);
 
 U_matrix = reshape(U,M,N)';
 %m� finne korresponderende x og y-verdier
@@ -111,14 +110,10 @@ plot3(X,Y,U_matrix,'b*',X,Y,u(R,THETA),'r*') %just for comparing the solutions v
 
 figure(3)
 surf(X,Y,U_matrix)
+title('Numerical solution')
 figure(4)
 surf(X,Y,u(R,THETA))
-
-
-
-
-
-
+title('Exact solution')
 
 
 
