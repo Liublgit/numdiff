@@ -28,17 +28,17 @@ f =@(r,theta) -(81/8).*sin(3*theta).*(-(44/3).*r.*pi.*(r.^2.*(r-9/11).*pi^2-(42/
 %f = @(r,theta) 4*(r-1).^2.*(-1+4*r); %for testing the method used once
 
 
-% err_r =error_circle(f,u);
-% figure(1)
-% loglog(err_r(1,:),err_r(2,:))
-% hold on
-% loglog(err_r(1,:),err_r(1,:),'--')
+err_r =error_circle(f,u);
+figure(1)
+loglog(err_r(1,:),err_r(2,:))
+hold on
+loglog(err_r(1,:),err_r(1,:),'--')
 
 
 
-M = 100; %number of internal nodes in r-dir
-N = 50; %number of internal nodes in theta-dir
-h = 2/(2*M+1);
+M = 50; %number of internal nodes in r-dir
+N = 100; %number of internal nodes in theta-dir
+h = 1/(M+1);
 k = 2*pi/N;
 %construct the matrix fval with f(r,theta) in all gridpoints
 r = linspace(h,1-h,M);
@@ -65,15 +65,15 @@ plot3(X,Y,U_matrix,'b*',X,Y,u(R,THETA),'r*')
 
 
 %TEST
-M = 100; %number of internal nodes in r-dir
-N = 50; %number of internal nodes in theta-dir
+N = 100; %number of internal nodes in theta-dir
+N = 50; %number of internal nodes in r-dir
 %returns value U MxN x 1 in the grid points
-h = 2/(2*M+1); %distance between nodes in r-dir
+h = 2/(2*N+1); %distance between nodes in r-dir
 %Construct A, the sparse diagonal block matrix diag(I,T,I)
-r_num = (1:M) - 1/2;
+r_num = (1:N) - 1/2;
 r=r_num*h; 
-k =2*pi/N; % vektor med k-verdier,
-theta = k*(0:(N-1));
+k =2*pi/M; % vektor med k-verdier,
+theta = k*(0:(M-1));
 
 
 [R,THETA] = meshgrid(r,theta);

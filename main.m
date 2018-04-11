@@ -124,9 +124,9 @@ surf(X,Y,u(R,THETA))
 
 err_r =error_circle(f,u);
 figure(1)
-loglog(err_r(1,:),err_r(2,:))
+loglog(err_r(1,:),err_r(2,:),'o-')
 hold on
-loglog(err_r(1,:),err_r(1,:),'--')
+loglog(err_r(1,:),err_r(1,:).^2,'--')
 
 
 end
