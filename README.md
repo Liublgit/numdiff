@@ -19,6 +19,8 @@
 * https://ocw.mit.edu/courses/aeronautics-and-astronautics/16-920j-numerical-methods-for-partial-differential-equations-sma-5212-spring-2003/lecture-notes/lec4.pdf (discretization of elliptic eq./Poisson, slides from MIT)
 * https://l.facebook.com/l.php?u=http%3A%2F%2Fwww2.math.umd.edu%2F~dlevy%2Fclasses%2Famsc466%2Flecture-notes%2Fdifferentiation-chap.pdf&h=ATPUdh4w4-fLDpAtFnk88cBR73-tAgXhFPAEe_4pkyqqDKYwp21QLzSKMq59P81lsHB6ejmj8uj0jRec75EuRJad0e94XTMk1rgDIosjxsgj3VhAeGVSJrBFE8k8ZNrKnlM enkelt skrevet taylorutvikling
 * http://brunoc69.xtreemhost.com/courses/WS05-06/numerikII/stencil.pdf?i=2 Nine-point (skewed) stencil
+* http://math.oregonstate.edu/~restrepo/475B/Notes/sourcehtml/node51.html (5-point formula)
+* http://math.oregonstate.edu/~restrepo/475B/Notes/sourcehtml/node52.html (9-point formula)
 
 
 ### Pep-talk from Charles
