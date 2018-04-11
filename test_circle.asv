@@ -15,7 +15,7 @@ u = @(r,theta) r.^4.*(1-r).*sin(3*theta).*cos(pi*r/2).*sin(pi*r);
 f =@(r,theta) -(81/8).*sin(3*theta).*(-(44/3).*r.*pi.*(r.^2.*(r-9/11).*pi^2-(42/11).*r+70/99).*cos((1/2)*pi.*r).^3+(560/81+r.^4.*(r-1).*pi^4+(-(524/9).*r.^3+(308/9).*r.^2)*pi^2).*sin((1/2)*pi.*r).*cos((1/2)*pi.*r).^2+(880/81*(r.^2.*(r-9/11).*pi^2-(189/55).*r+7/11)).*r*pi.*cos((1/2).*pi.*r)-(20/81).*r.^2*pi^2.*(r.^2.*(r-1)*pi^2-(262/5).*r+154/5).*sin((1/2)*pi.*r));
 
 
-%BLIR FEIL NÅR VI BRUKER DETTE.
+%BLIR FEIL NÅR VI BRUKER D
 % our test problem
 %u = @(r,theta) r.*(1-r).^4.*sin(theta);
 %f = @(r,theta) -3*r.^2.*sin(theta).*(-5+8*r);
@@ -27,17 +27,18 @@ f =@(r,theta) -(81/8).*sin(3*theta).*(-(44/3).*r.*pi.*(r.^2.*(r-9/11).*pi^2-(42/
 %f = @(r,theta) 4*(16*r.^3-9*r.^2-1)./r.^2
 %f = @(r,theta) 4*(r-1).^2.*(-1+4*r); %for testing the method used once
 
-
-err_r =error_circle(f,u);
-figure(1)
-loglog(err_r(1,:),err_r(2,:))
-hold on
-loglog(err_r(1,:),err_r(1,:),'--')
-
-
-
 M = 50; %number of internal nodes in r-dir
 N = 100; %number of internal nodes in theta-dir
+
+% err_r =error_circle(f,u);
+% figure(1)
+% loglog(err_r(1,:),err_r(2,:))
+% hold on
+% loglog(err_r(1,:),err_r(1,:),'--')
+
+
+
+
 h = 1/(M+1);
 k = 2*pi/N;
 %construct the matrix fval with f(r,theta) in all gridpoints
