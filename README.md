@@ -21,6 +21,7 @@
 * http://brunoc69.xtreemhost.com/courses/WS05-06/numerikII/stencil.pdf?i=2 Nine-point (skewed) stencil
 * http://math.oregonstate.edu/~restrepo/475B/Notes/sourcehtml/node51.html (5-point formula)
 * http://math.oregonstate.edu/~restrepo/475B/Notes/sourcehtml/node52.html (9-point formula)
+* http://math.unice.fr/~nkonga/Cours/FDFV/MaxPandStab.pdf Discrete maximum principle anvendt på test-problem med fremgangsmåte, muligens nyttig
 
 
 ### Pep-talk from Charles
