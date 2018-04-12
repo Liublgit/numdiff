@@ -45,7 +45,6 @@ u_exact_matrix = u_exact(X,Y);
 
 % Compare analytical solution with the solution found by fivepoint
 figure(2)
-subplot(1,2,1)
 plot3(X,Y,U_matrix,'b*',X,Y,u_exact_matrix,'ro');
 title('5-point method');
 
@@ -56,7 +55,7 @@ U_matrix = reshape(U,M,N)';
 u_exact_matrix = u_exact(X,Y);
 
 % Compare analytical solution with the solution found by ninepoint
-subplot(1,2,2)
+figure(3)
 plot3(X,Y,U_matrix,'b*',X,Y,u_exact_matrix,'ro');
 title('9-point method');
 
@@ -140,7 +139,7 @@ loglog(err_r(1,:),err_r(2,:),'o-k');
 hold on
 loglog(err_r(1,:),.7*err_r(1,:).^2,'--b');
 xlabel('$h$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
-ylabel('$\left\| e_h\right\|_2$','Interpreter', 'LaTeX', 'Fontsize', 14);
+ylabel('$\left\| e_h\right\|_2$','Interpreter', 'LaTeX', 'Fontsize', 14)
 legend({'Error','$y =  h^2$'},'Interpreter', 'LaTeX', 'Fontsize', 12);
 
 

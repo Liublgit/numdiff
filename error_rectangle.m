@@ -4,7 +4,7 @@ function [err_five, err_nine] = error_rectangle(f,analytic)
     err_five = zeros(2,M);
     err_nine = zeros(2,M);
    
-    % Check error/corvergance rate in m-direction
+    % Check error/corvergance rate in x/y
     for p =1:M    
         m= 2^p;
         n = m; % shrink steplength x/y simultanously

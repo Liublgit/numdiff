@@ -1,6 +1,7 @@
 ### Tasks
 * Sivert: Find regularity-result Poisson equation. Rewrite introduction/definition ellipticy.
-
+* Need to do some changes in ninepoint. Now it is taking in N and M as arguments, but they
+  are set equal inside the function. Need to either take in only N or M, or changee something inside the function.
 
 ### Analysis (10 p.)
 * Motivate your choice of method

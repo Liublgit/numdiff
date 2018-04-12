@@ -1,16 +1,15 @@
 function U =  circle(fval,M,N)
 %fval: (NxM) x1 vector with rhs-value in grid points
-%Direction of iteration: First r (from 0 to 1) and then theta (from 0 to
-%2pi)
-%N: number of interior points in theta-direction
-%M: number of interior points in r-direction
+%Direction of iteration: First r (from 0 to 1) and then theta (counterclockwise)
+%M: number of interior points in theta-direction
+%N: number of interior points in r-direction
 %returns value U NxM x 1 in the grid points
+
+%Construct A, the sparse diagonal block matrix
 h = 2/(2*M+1); %distance between nodes in r-dir
-%Construct A, the sparse diagonal block matrix diag(I,T,I)
 r_num = (1:M) - 1/2;
 lam = 1./(2*(r_num));
-%r=r_num*h; 
-k =2*pi/N; % vektor med k-verdier,
+k =2*pi/N; %delta theta
 r_values = repmat(r_num,N,1)';
 r_val = reshape(r_values,N*M,1);
 
@@ -20,8 +19,6 @@ lam_values_l = repmat(lam_left,N,1)';
 lam_val_l = reshape(lam_values_l,N*M,1);
 lam_values_r = repmat(lam_right,N,1)';
 lam_val_r = reshape(lam_values_r,N*M,1);
-
-
 
 e = ones(N*M,1);
 f = ones(N*M,1);
