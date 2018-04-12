@@ -73,11 +73,8 @@ nine_h = loglog(nine(1,:),.12*nine(1,:).^4,'r--');
 xlabel('$h=k$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
 ylabel('$\left\| e_h\right\|_2$','Interpreter', 'LaTeX', 'Fontsize', 14);
 legend({'5-point','9-point','$y =  h^2$','$y =  h^4$'},'Interpreter', 'LaTeX', 'Fontsize', 12);
-p_five = polyfit(log(five(1,:)),log(five(2,:)),1);
-p_nine = polyfit(log(nine(1,:)),log(nine(2,:)),1);
-convergence_order_five = p_five(1)
-convergence_order_nine = p_nine(1)
-
+p_five = polyfit(log(five(1,:),five(2,:),1)
+p_nine = polyfit(nine(1,:),nine(2,:),1)
 
 %% Define function f and corresponding analytic solution for disk centered in (0,0) with radius 1
 u = @(r,theta) r.^4.*(1-r).*sin(3*theta).*cos(pi*r/2).*sin(pi*r);
@@ -146,5 +143,4 @@ xlabel('$h$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
 ylabel('$\left\| e_h\right\|_2$','Interpreter', 'LaTeX', 'Fontsize', 14);
 legend({'Error','$y =  h^2$'},'Interpreter', 'LaTeX', 'Fontsize', 12);
 
-p_radial = polyfit(log(err_r(1,:)),log(err_r(2,:)),1);
-convergence_order_r = p_radial(1)
+
