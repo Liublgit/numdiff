@@ -22,6 +22,7 @@
 * http://math.oregonstate.edu/~restrepo/475B/Notes/sourcehtml/node51.html (5-point formula)
 * http://math.oregonstate.edu/~restrepo/475B/Notes/sourcehtml/node52.html (9-point formula)
 * http://math.unice.fr/~nkonga/Cours/FDFV/MaxPandStab.pdf Discrete maximum principle anvendt på test-problem med fremgangsmåte, muligens nyttig
+* https://books.google.no/books?id=M0tkw4oUucoC&pg=PA162 Derivation of modified nine-point method
 
 
 ### Pep-talk from Charles
