@@ -23,7 +23,7 @@
 * http://math.oregonstate.edu/~restrepo/475B/Notes/sourcehtml/node52.html (9-point formula)
 * http://math.unice.fr/~nkonga/Cours/FDFV/MaxPandStab.pdf Discrete maximum principle anvendt på test-problem med fremgangsmåte, muligens nyttig
 * https://books.google.no/books?id=M0tkw4oUucoC&pg=PA162 Derivation of modified nine-point method
-
+* https://services.math.duke.edu/~leili/teaching/duke/math660s16/lectures/lec3.pdf Analyse av finite difference-metoder
 
 ### Pep-talk from Charles
 Charles gikk raskt gjennom noen punkter som kan være greie å ha som utgangspunkt.
