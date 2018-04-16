@@ -20,6 +20,8 @@ xlabel('$x$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
 ylabel('$y$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
 zlabel('$u(x,y)$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
 
+
+
 %% Construct grid
 
 M = 100; %number of internal nodes in x-dir
@@ -97,6 +99,15 @@ ylabel('$y$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
 zlabel('$u(x,y)$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
 
 
+% Plot f
+figure(8)
+s = surf(R.*cos(THETA),R.*sin(THETA),f(R,THETA));
+
+s.EdgeColor = 'None';
+xlabel('$x$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
+ylabel('$y$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
+zlabel('$f(x,y)$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
+
 
 %% Solve using a circular grid
 M = 100; %number of internal nodes in r-dir
@@ -136,15 +147,31 @@ surf(Xp,Yp,u(Rp,THETAp));
 title('Exact solution');
 
 
-%% Compute solution error in 2-norm, a.f.o. steplength in r-direction %%
-err_r =error_circle(f,u);
+%% Compute solution error in 2-norm %%
+% a.f.o. steplength in r-direction
+err_r =error_circle_r(f,u);
 figure(6)
 loglog(err_r(1,:),err_r(2,:),'o-k');
 hold on
-loglog(err_r(1,:),.7*err_r(1,:).^2,'--b');
+loglog(err_r(1,:),.5*err_r(1,:).^2,'--b');
 xlabel('$h$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
 ylabel('$\left\| e_h\right\|_2$','Interpreter', 'LaTeX', 'Fontsize', 14);
 legend({'Error','$y =  h^2$'},'Interpreter', 'LaTeX', 'Fontsize', 12);
 
 p_radial = polyfit(log(err_r(1,:)),log(err_r(2,:)),1);
 convergence_order_r = p_radial(1)
+
+
+% a.f.o step length in theta-direction
+
+err_theta =error_circle_theta(f,u);
+figure(7)
+loglog(err_theta(1,:),err_theta(2,:),'o-k');
+hold on
+loglog(err_theta(1,:),.012*err_theta(1,:).^2,'--b');
+xlabel('$k$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
+ylabel('$\left\| e_h\right\|_2$','Interpreter', 'LaTeX', 'Fontsize', 14);
+legend({'Error','$y =  k^2$'},'Interpreter', 'LaTeX', 'Fontsize', 12);
+
+p_theta = polyfit(log(err_theta(1,:)),log(err_theta(2,:)),1);
+convergence_order_theta = p_theta(1)
