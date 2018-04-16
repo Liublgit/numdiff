@@ -18,8 +18,8 @@ end
 %%
 %%Nine point:
 norm_nine = zeros(1, M);
-for M = 95:maxM
-    N = M
+for M = 1:maxM
+    N = M;
     h = 1/(M+1); %distance between nodes in x-dir
     k = 1/(N+1); %distance between nodes in y-dir
     e = ones(M*N,1);
