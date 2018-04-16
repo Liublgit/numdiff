@@ -20,8 +20,8 @@ function [err_five, err_nine] = error_rectangle(f,analytic)
         err_five(2,p) = norm(U-u,2)*sqrt(h^2);
         err_five(1,p) = h;
         
-        V = ninepoint(fval,m,n);
-        U = ninepoint(V,m,n);
+        V = ninepoint(fval,m);%m=n
+        U = ninepoint(V,m);%m=n
         err_nine(2,p) = norm(U-u,2)*sqrt(h^2);
         err_nine(1,p) = h;
     end

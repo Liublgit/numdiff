@@ -50,8 +50,8 @@ plot3(X,Y,U_matrix,'b*',X,Y,u_exact_matrix,'ro');
 title('5-point method');
 
 % Nine point 
-V = ninepoint(fval,M,N);
-U = ninepoint(V,M,N);
+V = ninepoint(fval,M);
+U = ninepoint(V,M);
 U_matrix = reshape(U,M,N)';
 u_exact_matrix = u_exact(X,Y);
 
