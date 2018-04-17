@@ -177,4 +177,16 @@ p_theta = polyfit(log(err_theta(1,:)),log(err_theta(2,:)),1);
 convergence_order_theta = p_theta(1)
 
 
+% r and theta in 1
 
+err_polar =error_circle(f,u);
+figure(8)
+loglog(err_polar(1,:),err_polar(2,:),'o-k');
+hold on
+loglog(err_polar(1,:),.012*err_polar(1,:).^2,'--b');
+xlabel('$h^2 + k^2$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
+ylabel('$\left\| e_h\right\|_2$','Interpreter', 'LaTeX', 'Fontsize', 14);
+legend({'Error','$y =  ^2$'},'Interpreter', 'LaTeX', 'Fontsize', 12);
+
+p_theta = polyfit(log(err_theta(1,:)),log(err_theta(2,:)),1);
+convergence_order_theta = p_theta(1)
