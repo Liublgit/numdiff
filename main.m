@@ -71,7 +71,7 @@ nine_h = loglog(nine(1,:),.12*nine(1,:).^4,'r--');
 xlabel('$h=k$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
 ylabel('$\left\| e_h\right\|_2$','Interpreter', 'LaTeX', 'Fontsize', 14);
 legend({'5-point','9-point','$y =  h^2$','$y =  h^4$'},'Interpreter', 'LaTeX', 'Fontsize', 12);
-% find convergence order
+% Find convergence order
 p_five = polyfit(log(five(1,:)),log(five(2,:)),1);
 p_nine = polyfit(log(nine(1,:)),log(nine(2,:)),1);
 convergence_order_five = p_five(1)
