@@ -101,34 +101,34 @@ ylabel('$y$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
 zlabel('$f(x,y)$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
 
 %% Solve using a circular grid
-M = 100; %number of internal nodes in r-dir
-N = 100; %number of internal nodes in theta-dir
+M = 100; %Number of internal nodes in r-dir
+N = 100; %Number of internal nodes in theta-dir
 h = 2/(2*M+1);
 k = 2*pi/N;
-% cconstruct the matrix fval with f(r,theta) in all gridpoints
+% Construct the matrix fval with f(r,theta) in all gridpoints
 r = ((1:M) - 1/2)*h;
 theta = k*(0:(N-1));
 [R,THETA] = meshgrid(r,theta);
-F = f(R,THETA)';%need to take the transpose in order to get it row-wise, since default reshape is by column
-fval = reshape(F,M*N,1);%reshape to vector-form, [f(row_1),f(row_2,...,f(row_M)]
+F = f(R,THETA)';%Need to take the transpose in order to get it row-wise, since default reshape is by column
+fval = reshape(F,M*N,1);%Reshape to vector-form, [f(row_1),f(row_2,...,f(row_M)]
 
-% eq 1: solve grad^2 v = f
+% Eq 1: solve grad^2 v = f
 V =  circle(fval,M,N);
-% eq 2: solve grad^2 u = v
+% Eq 2: solve grad^2 u = v
 U = circle(V,M,N);
 
 U_matrix = reshape(U,M,N)';
 
-% find corresponding x- and y-values for plotting
+% Find corresponding x- and y-values for plotting
 X =R.*cos(THETA);
 Y = R.*sin(THETA);
-% add theta = 0 to the last row for plotting 
+% Add theta = 0 to the last row for plotting 
 Xp = [X;X(1,:)];
 Yp = [Y;Y(1,:)];
 Up = [U_matrix;U_matrix(1,:)];
 [Rp,THETAp] = meshgrid(r,[theta,theta(1)]); 
 
-% compare the numerical solution visually with the exact solution
+% Compare the numerical solution visually with the exact solution
 figure(5)
 subplot(1,2,1)
 surf(Xp,Yp,Up);
@@ -147,7 +147,7 @@ loglog(err_r(1,:),.5*err_r(1,:).^2,'--b');
 xlabel('$h$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
 ylabel('$\left\| e_h\right\|_2$','Interpreter', 'LaTeX', 'Fontsize', 14);
 legend({'Error','$y =  h^2$'},'Interpreter', 'LaTeX', 'Fontsize', 12);
-% find convergence order
+% Find convergence order
 p_radial = polyfit(log(err_r(1,:)),log(err_r(2,:)),1);
 convergence_order_r = p_radial(1)
 
@@ -160,6 +160,6 @@ loglog(err_theta(1,:),.012*err_theta(1,:).^2,'--b');
 xlabel('$k$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
 ylabel('$\left\| e_h\right\|_2$','Interpreter', 'LaTeX', 'Fontsize', 14);
 legend({'Error','$y =  k^2$'},'Interpreter', 'LaTeX', 'Fontsize', 12);
-% find convergence order
+% Find convergence order
 p_theta = polyfit(log(err_theta(1,:)),log(err_theta(2,:)),1);
 convergence_order_theta = p_theta(1)
