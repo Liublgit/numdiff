@@ -1,14 +1,11 @@
 %% solving the biharmonic eqution by solving the system of two poisson equations
 close all
-clear 
-
-    
-    
+clear     
 %% Define function f and corresponding analytic solution for omega = [0,1]x[0,1]
 f =@(x,y) sin(pi*x).*sin(pi*y)*4*pi^4;
 u_exact = @(x,y) sin(pi*x).*sin(pi*y);
 
-%plot of exact solution
+% plot of exact solution
 N_points = 1000;
 x = linspace(0,1,N_points);
 y = linspace(0,1,N_points);
@@ -32,10 +29,9 @@ x = linspace(h,1-h,M);
 y = linspace(k,1-k,N);
 [X,Y] = meshgrid(x,y);
 
-%construct the matrix fval with f(x,y) in all gridpoints
+% construct the matrix fval with f(x,y) in all gridpoints
 F = f(X,Y)';%need to take the transpose in order to get it row-wise, since default reshape is by column
-%reshape to vector-form, [f(row_1),f(row_2,...,f(row_M)]
-fval = reshape(F,M*N,1);
+fval = reshape(F,M*N,1); %reshape to vector-form, [f(row_1),f(row_2,...,f(row_M)]
 
 %% Solve with five-point / nine-point stencil %%
 
@@ -65,7 +61,7 @@ title('9-point method');
 %% Compute solution error in 2-norm, a.f.o. steplength %%
 [five, nine] = error_rectangle(f,u_exact);
 
-%make a loglog-plot of the error
+% loglog-plot of the error
 figure(3)
 five_log =loglog(five(1,:), five(2,:),'-bo');
 hold on

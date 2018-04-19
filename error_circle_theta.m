@@ -6,7 +6,7 @@ function err_theta = error_circle_theta(f,analytic)
     r = linspace(h,1-h,m);
     
    
-    % Check error/corvergance rate in r-direction
+    % Check error/corvergance rate in theta-direction
     for p =1:M    
         n= 2^(p+1);
         k = 2*pi/n;

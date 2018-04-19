@@ -1,4 +1,4 @@
-
+%% Demonstrating stability by plotting the inf-norm of A^-1 for all three methods
 maxM = 100;
 %Demonstrating stability for five-point:
 norm_five = zeros(1, maxM);
