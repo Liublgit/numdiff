@@ -77,13 +77,13 @@ p_nine = polyfit(log(nine(1,:)),log(nine(2,:)),1);
 convergence_order_five = p_five(1)
 convergence_order_nine = p_nine(1)
 
-
+%% Circle domain
 
 %% Define function f and corresponding analytic solution for disk centered in (0,0) with radius 1
 u = @(r,theta) r.^4.*(1-r).*sin(3*theta).*cos(pi*r/2).*sin(pi*r);
 f =@(r,theta) -(81/8).*sin(3*theta).*(-(44/3).*r.*pi.*(r.^2.*(r-9/11).*pi^2-(42/11).*r+70/99).*cos((1/2)*pi.*r).^3+(560/81+r.^4.*(r-1).*pi^4+(-(524/9).*r.^3+(308/9).*r.^2)*pi^2).*sin((1/2)*pi.*r).*cos((1/2)*pi.*r).^2+(880/81*(r.^2.*(r-9/11).*pi^2-(189/55).*r+7/11)).*r*pi.*cos((1/2).*pi.*r)-(20/81).*r.^2*pi^2.*(r.^2.*(r-1)*pi^2-(262/5).*r+154/5).*sin((1/2)*pi.*r));
 
-% plot analytical solution u
+% Plot analytical solution u
 Npoints = 500;
 r = linspace(0,1,Npoints);
 theta = linspace(0,2*pi,Npoints);
@@ -95,7 +95,7 @@ xlabel('$x$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
 ylabel('$y$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
 zlabel('$u(x,y)$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
 
-% plot f
+% Plot f
 figure(8)
 s = surf(R.*cos(THETA),R.*sin(THETA),f(R,THETA));
 s.EdgeColor = 'None';
@@ -108,12 +108,12 @@ M = 100; %number of internal nodes in r-dir
 N = 100; %number of internal nodes in theta-dir
 h = 2/(2*M+1);
 k = 2*pi/N;
-% cconstruct the matrix fval with f(r,theta) in all gridpoints
+% construct the matrix fval with f(r,theta) in all gridpoints
 r = ((1:M) - 1/2)*h;
 theta = k*(0:(N-1));
 [R,THETA] = meshgrid(r,theta);
-F = f(R,THETA)';%need to take the transpose in order to get it row-wise, since default reshape is by column
-fval = reshape(F,M*N,1);%reshape to vector-form, [f(row_1),f(row_2,...,f(row_M)]
+F = f(R,THETA)'; % need to take the transpose in order to get it row-wise, since default reshape is by column
+fval = reshape(F,M*N,1); % reshape to vector-form, [f(row_1),f(row_2,...,f(row_M)]
 
 % eq 1: solve grad^2 v = f
 V =  circle(fval,M,N);
@@ -131,7 +131,7 @@ Yp = [Y;Y(1,:)];
 Up = [U_matrix;U_matrix(1,:)];
 [Rp,THETAp] = meshgrid(r,[theta,theta(1)]); 
 
-% compare the numerical solution visually with the exact solution
+% Compare the numerical solution visually with the exact solution
 figure(5)
 subplot(1,2,1)
 surf(Xp,Yp,Up);
