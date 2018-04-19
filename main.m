@@ -1,11 +1,14 @@
-%% solving the biharmonic eqution by solving the system of two poisson equations
+%% solving the biharmonic equation by solving the system of two poisson equations
 close all
 clear     
-%% Define function f and corresponding analytic solution for omega = [0,1]x[0,1]
+
+%% Rectangular domain
+
+% Define function f and corresponding analytic solution for omega = [0,1]x[0,1]
 f =@(x,y) sin(pi*x).*sin(pi*y)*4*pi^4;
 u_exact = @(x,y) sin(pi*x).*sin(pi*y);
 
-% plot of analytical solution u
+% Plot of analytical solution u
 N_points = 1000;
 x = linspace(0,1,N_points);
 y = linspace(0,1,N_points);
@@ -18,40 +21,40 @@ ylabel('$y$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
 zlabel('$u(x,y)$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
 
 
-%% Construct grid
-M = 100; %number of internal nodes in x-dir
-N = 100; %number of internal nodes in y-dir
+% Construct grid
+M = 100; % Number of internal nodes in x-dir
+N = 100; % Number of internal nodes in y-dir
 h = 1/(M+1);
 k = 1/(N+1);
 x = linspace(h,1-h,M);
 y = linspace(k,1-k,N);
 [X,Y] = meshgrid(x,y);
 
-% construct the matrix fval with f(x,y) in all gridpoints
-F = f(X,Y)';%need to take the transpose in order to get it row-wise, since default reshape is by column
-fval = reshape(F,M*N,1); %reshape to vector-form, [f(row_1),f(row_2,...,f(row_M)]
+% Construct the matrix fval with f(x,y) in all gridpoints
+F = f(X,Y)';% Need to take the transpose in order to get it row-wise, since default reshape is by column
+fval = reshape(F,M*N,1); % Reshape to vector-form, [f(row_1),f(row_2,...,f(row_M)]
 
 %% Solve with five-point / nine-point stencil %%
 
-% five point
+% Five point
 V =  fivepoint(fval,M,N); 
 U = fivepoint(V,M,N);
 U_matrix = reshape(U,M,N)';
 u_exact_matrix = u_exact(X,Y);
 
-% compare analytical solution with the solution found by fivepoint
+% Compare analytical solution with the solution found by fivepoint
 figure(2)
 subplot(1,2,1)
 plot3(X,Y,U_matrix,'b*',X,Y,u_exact_matrix,'ro');
 title('5-point method');
 
-% nine point 
+% Nine point 
 V = ninepoint(fval,M);
 U = ninepoint(V,M);
 U_matrix = reshape(U,M,N)';
 u_exact_matrix = u_exact(X,Y);
 
-% compare analytical solution with the solution found by ninepoint
+% Compare analytical solution with the solution found by ninepoint
 subplot(1,2,2)
 plot3(X,Y,U_matrix,'b*',X,Y,u_exact_matrix,'ro');
 title('9-point method');
