@@ -4,6 +4,8 @@ function U =  ninepoint(fval,M)
 %returns value U MxN X 1 in the grid points
 
 h = 1/(M+1); %distance between nodes in x-dir
+N=M;
+
 %Construct A, the sparse diagonal block matrix diag(I,T,I)
 
 e = ones(M*N,1);
