@@ -1,11 +1,14 @@
-%% solving the biharmonic eqution by solving the system of two poisson equations
+%% solving the biharmonic equation by solving the system of two poisson equations
 close all
 clear     
-%% Define function f and corresponding analytic solution for omega = [0,1]x[0,1]
+
+%% Rectangular domain
+
+% Define function f and corresponding analytic solution for omega = [0,1]x[0,1]
 f =@(x,y) sin(pi*x).*sin(pi*y)*4*pi^4;
 u_exact = @(x,y) sin(pi*x).*sin(pi*y);
 
-% plot of analytical solution u
+% Plot of analytical solution u
 N_points = 1000;
 x = linspace(0,1,N_points);
 y = linspace(0,1,N_points);
@@ -18,40 +21,40 @@ ylabel('$y$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
 zlabel('$u(x,y)$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
 
 
-%% Construct grid
-M = 100; %number of internal nodes in x-dir
-N = 100; %number of internal nodes in y-dir
+% Construct grid
+M = 100; % Number of internal nodes in x-dir
+N = 100; % Number of internal nodes in y-dir
 h = 1/(M+1);
 k = 1/(N+1);
 x = linspace(h,1-h,M);
 y = linspace(k,1-k,N);
 [X,Y] = meshgrid(x,y);
 
-% construct the matrix fval with f(x,y) in all gridpoints
-F = f(X,Y)';%need to take the transpose in order to get it row-wise, since default reshape is by column
-fval = reshape(F,M*N,1); %reshape to vector-form, [f(row_1),f(row_2,...,f(row_M)]
+% Construct the matrix fval with f(x,y) in all gridpoints
+F = f(X,Y)';% Need to take the transpose in order to get it row-wise, since default reshape is by column
+fval = reshape(F,M*N,1); % Reshape to vector-form, [f(row_1),f(row_2,...,f(row_M)]
 
 %% Solve with five-point / nine-point stencil %%
 
-% five point
+% Five point
 V =  fivepoint(fval,M,N); 
 U = fivepoint(V,M,N);
 U_matrix = reshape(U,M,N)';
 u_exact_matrix = u_exact(X,Y);
 
-% compare analytical solution with the solution found by fivepoint
+% Compare analytical solution with the solution found by fivepoint
 figure(2)
 subplot(1,2,1)
 plot3(X,Y,U_matrix,'b*',X,Y,u_exact_matrix,'ro');
 title('5-point method');
 
-% nine point 
+% Nine point 
 V = ninepoint(fval,M);
 U = ninepoint(V,M);
 U_matrix = reshape(U,M,N)';
 u_exact_matrix = u_exact(X,Y);
 
-% compare analytical solution with the solution found by ninepoint
+% Compare analytical solution with the solution found by ninepoint
 subplot(1,2,2)
 plot3(X,Y,U_matrix,'b*',X,Y,u_exact_matrix,'ro');
 title('9-point method');
@@ -74,13 +77,13 @@ p_nine = polyfit(log(nine(1,:)),log(nine(2,:)),1);
 convergence_order_five = p_five(1)
 convergence_order_nine = p_nine(1)
 
-
+%% Circle domain
 
 %% Define function f and corresponding analytic solution for disk centered in (0,0) with radius 1
 u = @(r,theta) r.^4.*(1-r).*sin(3*theta).*cos(pi*r/2).*sin(pi*r);
 f =@(r,theta) -(81/8).*sin(3*theta).*(-(44/3).*r.*pi.*(r.^2.*(r-9/11).*pi^2-(42/11).*r+70/99).*cos((1/2)*pi.*r).^3+(560/81+r.^4.*(r-1).*pi^4+(-(524/9).*r.^3+(308/9).*r.^2)*pi^2).*sin((1/2)*pi.*r).*cos((1/2)*pi.*r).^2+(880/81*(r.^2.*(r-9/11).*pi^2-(189/55).*r+7/11)).*r*pi.*cos((1/2).*pi.*r)-(20/81).*r.^2*pi^2.*(r.^2.*(r-1)*pi^2-(262/5).*r+154/5).*sin((1/2)*pi.*r));
 
-% plot analytical solution u
+% Plot analytical solution u
 Npoints = 500;
 r = linspace(0,1,Npoints);
 theta = linspace(0,2*pi,Npoints);
@@ -92,7 +95,7 @@ xlabel('$x$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
 ylabel('$y$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
 zlabel('$u(x,y)$', 'Interpreter', 'LaTeX', 'Fontsize', 14);
 
-% plot f
+% Plot f
 figure(8)
 s = surf(R.*cos(THETA),R.*sin(THETA),f(R,THETA));
 s.EdgeColor = 'None';
@@ -105,6 +108,7 @@ M = 100; %Number of internal nodes in r-dir
 N = 100; %Number of internal nodes in theta-dir
 h = 2/(2*M+1);
 k = 2*pi/N;
+
 % Construct the matrix fval with f(r,theta) in all gridpoints
 r = ((1:M) - 1/2)*h;
 theta = k*(0:(N-1));
