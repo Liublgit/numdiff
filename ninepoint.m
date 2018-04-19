@@ -2,9 +2,8 @@ function U =  ninepoint(fval,M)
 %fval: MxN x1 vector with rhs-value in grid points
 %M = N: number of interior points in x-direction and y-direction
 %returns value U MxN X 1 in the grid points
-N=M;
+
 h = 1/(M+1); %distance between nodes in x-dir
-%k = 1/(N+1); %distance between nodes in y-dir
 %Construct A, the sparse diagonal block matrix diag(I,T,I)
 
 e = ones(M*N,1);
